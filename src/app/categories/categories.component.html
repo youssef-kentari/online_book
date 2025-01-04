@@ -1,22 +1,18 @@
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Logo</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-        </ul>
-      </div>
+<nav class="navbar-expand container-fluid">
+  <div class=" d-flex justify-content-between align-items-center">
+    <div class="dropdown">
+      <button
+      class="btn btn-none dropdown-toggle"
+      type="button"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      {{categorie}}
+    </button>
+    <ul class="dropdown-menu">
+      <li *ngFor="let categorie of categories"><a class="dropdown-item" (click)="setCategorie(categorie.categorie)">{{categorie.categorie}}</a></li>
+    </ul>
     </div>
-  </nav>
-  
+  </div>
+
+</nav>

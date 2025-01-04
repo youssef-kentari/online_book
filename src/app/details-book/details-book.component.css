@@ -1,0 +1,17 @@
+/* Add this to details-book.component.css */
+.back-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 13px;
+    background-color: #959390;
+    border: none;
+    border-radius: 100%;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .back-button:hover {
+    background-color: #f19f3a;
+  }
+  

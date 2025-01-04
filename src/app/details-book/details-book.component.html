@@ -1,0 +1,73 @@
+<div class="container my-5">
+    <div class="row ">
+        <div class="col-lg-5 d-flex justify-content-center mb-3">
+            <img [src]="bookItem.cover_image" class="rounded">
+        </div>
+        <div class="col-lg-7 d-flex flex-column justify-content-center">
+            <div class="main-description px-2">
+                <div class="category text-bold">
+                    by: {{bookItem.author}}
+                </div>
+                <div class="product-title text-bold my-3">
+                    <strong>
+                        {{bookItem.title}}
+                    </strong>
+                </div>
+                <p>
+                    {{bookItem.categorie.categorie}}
+                </p>
+
+
+                <div class="price-area my-2">
+                    <p class="mb-1">
+                        <small>available : {{bookItem.nbrExemplaireAvai}}</small>
+                    </p>
+
+                </div>
+
+                <button class="addToCart btn btn-secondary">
+                    <small>
+                        <strong>booking now </strong>
+                    </small>
+
+                </button>
+            </div>
+
+            <div class="row questions bg-light p-3">
+                <div class="col-md-1 icon">
+                    <i class="fa-brands fa-rocketchat questions-icon"></i>
+                </div>
+                <div class="col-md-11 text">
+                    <small>
+                        Have a question about our products at <strong>MyApp shop</strong>? Feel free to contact our
+                        representatives via live chat or email.
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt-3">
+    <div class="container-fluid similar-products my-4">
+        <hr>
+        <span class="h6 text-secondary">
+            <i class="fa-solid fa-dna" style="color: #b3b3b383;"></i>
+            Similar books
+        </span>
+
+
+        <div class="d-flex flex-wrap justify-content-center">
+
+            <div class="card m-2" *ngFor="let book of similarBooks">
+                <img class="card-img" [src]="book.cover_image" style="width: 200px;" (click)="navigateToDetails(book)">
+            </div>
+
+
+        </div>
+    </div>
+    <!-- Add this button to the HTML template -->
+<button (click)="navigateToMainPage()" class="back-button">
+    <i class="fa-solid fa-house" style="color: #ffffff;"></i>
+  </button>
+  
