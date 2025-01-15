@@ -1,84 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Navbar Example</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <!-- Menu Toggle -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
+
+<div
+  class="sidenav"
+  [ngClass]="isLeftSidebarCollapsed ? 'sidenav-collapsed' : ''"
+>
+  <div class="logo-container">
+    <button class="logo" (click)="toggleCollapse()">
+      <i class="fas fa-bars"></i>
     </button>
-
-    <!-- Search Bar -->
-    <form class="d-flex align-items-center me-auto" style="max-width: 300px;">
-      <button class="btn sidebar-buton" (click)="toggleSidebar()">
-        <i class="fa fa-bars"></i>
+    @if (!isLeftSidebarCollapsed) {
+      <div class="logo-text">App</div>
+      <button class="btn-close" (click)="closeSidenav()">
+        <i class="fas fa-times close-icon"></i>
       </button>
-      <input
-        class="form-control"
-        type="search"
-        placeholder="Search (ctrl + '/' to focus)"
-        aria-label="Search"
-      />
-      <button class="btn btn-light" type="submit">
-        <i class="fas fa-search"></i>
-      </button>
-    </form>
+    }
 
-    <!-- Links and Buttons -->
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="docsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Docs
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="docsDropdown">
-            <li><a class="dropdown-item" href="#">Documentation</a></li>
-            <li><a class="dropdown-item" href="#">API Reference</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Support</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Services</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Learn</a>
-        </li>
-        <li class="nav-item">
-          <button class="btn btn-primary ms-3">Login</button>
-        </li>
-      </ul>
+  </div>
+  <div class="sidenav-nav">
+    @for (item of items; track $index) {
+      <li class="sidenav-nav-item">
+        <a
+          class="sidenav-nav-link"
+          [routerLink]="item.routeLink"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <i class="sidenav-link-icon" [class]="item.icon"></i>
+          @if (!isLeftSidebarCollapsed) {
+            <span class="sidenav-link-text">{{ item.label }}</span>
+          }
+        </a>
+      </li>
+    }
+  </div>
+</div>
+<div class="navbar">
+  <div class="navbar-content">
+    <span class="navbar-brand">Navbar Title</span>
+    <div class="navbar-menu">
+      <button class="navbar-button" routerLink='/signIn'>Log In</button>
+      <button class="navbar-button">Log out</button>
     </div>
   </div>
-</nav>
-
-<div class="overlay" *ngIf="isSidebarOpen" (click)="closeSidebar()"></div>
-<div class="sidebar" [class.open]="isSidebarOpen">
-  <div class="sidebar-header">
-    <img src="onlineBookLogo.jpg" class="logo" alt="logo">
-    <button class="btn-close" (click)="toggleSidebar()"></button>
-  </div>
-  <ul class="list-unstyled">
-    <li><a routerLink="/dashboard">Dashboard</a></li>
-    <li><a routerLink="/settings">Settings</a></li>
-    <li><a routerLink="/profile">Profile</a></li>
-  </ul>
 </div>
-
-
-<!-- Bootstrap JS -->
-<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>-->
-</body>
-</html>
