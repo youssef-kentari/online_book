@@ -45,6 +45,7 @@ export class NavbarComponent {
       routeLink: 'pages',
       icon: 'fas fa-file',
       label: 'Pages',
+
     },
     {
       routeLink: 'addAdherent',
@@ -52,7 +53,7 @@ export class NavbarComponent {
       label: 'Ajouter Adherent',
     },
     {
-      routeLink: 'addLivre',
+      routeLink: 'addBook',
       icon: 'fas fa-file',
       label: 'Ajouter Livre',
     },

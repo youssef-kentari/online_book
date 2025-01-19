@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="add-form">
+        <form (ngSubmit)="save(b)" #b="ngForm" class="mt-5 border p-4 bg-light shadow">
+          <h4 class="mb-5 text-secondary">Ajouter Livre</h4>
+          <div class="row">
+            <div class="mb-3 col-md-6">
+              <label>ISBN<span class="text-danger">*</span></label>
+              <input type="text" name="fname" class="form-control" placeholder="L'identifiant du livre" [(ngModel)]="book.isbn" #isbnatt="ngModel" required>
+              @if(isbnatt.hasError('required') && isbnatt.dirty){
+                <div class="errors">
+                  <span >ce champ est requis</span>
+                </div>
+              }
+            </div>
+
+            <div class="mb-3 col-md-6">
+              <label>Titre<span class="text-danger">*</span></label>
+              <input type="text" name="titre" class="form-control" placeholder="Titre du livre" [(ngModel)]="book.titre" minlength="4" #titreatt="ngModel" required>
+              @if(titreatt.invalid && titreatt.dirty){
+                <div class="errors">
+                  @if(titreatt.hasError('required')){
+                  <span >ce champ est requis</span>}
+                  @if(titreatt.errors?.['text']){
+                  <span >ce champ est requis</span>}
+                </div>
+              }
+            </div>
+
+            <div class="mb-3 col-md-12">
+              <label>Auteur<span class="text-danger">*</span></label>
+              <input type="text" name="auteur" class="form-control" placeholder="L'auteur du livre" [(ngModel)]="book.auteur" #auteuratt="ngModel" required>
+              @if(auteuratt.invalid && auteuratt.dirty){
+                <div class="errors">
+                  @if(auteuratt.hasError('required')){
+                    <span >ce champ est requis</span>}
+                </div>
+              }
+            </div>
+            <div class="mb-3 col-md-12">
+              <label>Categorie<span class="text-danger">*</span></label>
+              <select  name="categorie" class="form-control" [(ngModel)]="book.categorie" #categatt="ngModel" required>
+                <option value="" disabled selected>Selectionner une categorie</option>
+                  <option value="anim" >Anim</option>
+                @if(categatt.invalid && categatt.dirty){
+                  <div class="errors">
+                    @if(categatt.hasError('required')){
+                      <span >ce champ est requis</span>}
+                  </div>
+                }
+              </select>
+            </div>
+            <div class="col-md-12">
+              <button type="submit" class="btn btn-primary float-end">Enregister</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

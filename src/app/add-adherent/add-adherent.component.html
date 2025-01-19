@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="signup-form">
+        <form (ngSubmit)="save(adh)" #adh="ngForm" class="mt-5 border p-4 bg-light shadow">
+          <h4 class="mb-5 text-secondary">Aajouter Adherent</h4>
+          <div class="row">
+            <div class="mb-3 col-md-6">
+              <label>Nom<span class="text-danger">*</span></label>
+              <input type="text" name="fname" class="form-control" placeholder="Entrer Nom"
+                    minlength="3" [(ngModel)]="user.lname" required
+                     #fnameatt="ngModel">
+              @if(fnameatt.hasError('required') && fnameatt.dirty){
+              <div class="errors">
+              <span >ce champ est requis</span>
+              </div>
+              }
+            </div>
+
+            <div class="mb-3 col-md-6">
+              <label>Prenom<span class="text-danger">*</span></label>
+              <input type="text" name="Lname" class="form-control" placeholder="Entrer Prenom"
+                     minlength="3" [(ngModel)]="user.fname" required #lnameatt="ngModel">
+              @if(lnameatt.hasError('required') && lnameatt.dirty){
+                <div class="errors">
+                  <span>ce champ est requis</span>
+                </div>
+              }
+            </div>
+
+            <div class="mb-3 col-md-6">
+              <label>C.I.N<span class="text-danger">*</span></label>
+              <input type="text" name="cin" class="form-control" [(ngModel)]="user.cin" #cinatt="ngModel"  placeholder="Entrer CIN"  required >
+              @if(cinatt.hasError('required') && cinatt.dirty){
+                <div class="errors">
+                  <span> ce champ est requis</span>
+                </div>
+              }
+            </div>
+
+            <div class="mb-3 col-md-6">
+              <label>email<span class="text-danger">*</span></label>
+              <input type="email" name="email" class="form-control" placeholder="Entrer l'email" [(ngModel)]="user.email" required #emailatt="ngModel">
+              @if(emailatt.invalid && emailatt.dirty){
+                <div class="errors">
+                  <span>ce champ est requis</span>
+                  @if(emailatt.errors?.['email']){
+                    <span>l'email n'est pas valid</span>
+                  }
+                </div>
+              }
+            </div>
+
+            <div class="mb-3 col-md-6">
+              <label><input type="radio" name="genre" value="homme" required> Homme</label>
+            </div>
+            <div class="mb-3 col-md-6">
+             <label> <input type="radio" name="genre" value="femme"> Femme</label>
+            </div>
+            <div class="col-md-12">
+              <button type="submit" class="btn btn-primary float-end">Enregistrer</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

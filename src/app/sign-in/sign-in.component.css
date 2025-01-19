@@ -13,3 +13,8 @@
     height: 100%;
   }
 }
+.errors{
+  font-size: 0.9em;
+  margin-top: 3px;
+  color: red;
+}
