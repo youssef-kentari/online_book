@@ -6,7 +6,7 @@
              class="img-fluid" alt="Sample image">
       </div>
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-        <form (ngSubmit)="signUp(f)" #f="ngForm">
+        <form (ngSubmit)="signUp()" [formGroup]="SignupUserForm" >
 <!--          <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">-->
 <!--            <p class="lead fw-normal mb-0 me-3">Sign in with</p>-->
 <!--            <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-floating mx-1">-->
@@ -29,11 +29,10 @@
             <label class="form-label" for="username">Username</label>
 
             <input type="text" id="username" class="form-control form-control-lg"
-                   placeholder="Enter a valid username" name="userName" [(ngModel)]="user.userName" #usernameatt="ngModel" required />
-            @if(usernameatt.hasError('required') && usernameatt.dirty){
-              <div class="errors">
-                <span>ce champ est requis</span>
-              </div>
+                   placeholder="Enter a valid username" name="userName" formControlName="userName" />
+            @if(SignupUserForm.get('userName')?.hasError('required') && (SignupUserForm.get('userName')?.dirty||
+            SignupUserForm.get('userName')?.touched||this.isSubmitted)) {
+            <span class="errors">ce champ est requis</span>
             }
           </div>
           <!-- Email input -->
@@ -41,31 +40,39 @@
             <label class="form-label" for="form3Example3">Email address</label>
 
             <input type="email" id="form3Example3" class="form-control form-control-lg"
-                   placeholder="Enter a valid email address" name="email" [(ngModel)]="user.email" #emailatt="ngModel" required />
-            @if(emailatt.hasError('required') && emailatt.dirty){
-              <div class="errors">
-                <span>ce champ est requis</span>
-
-              </div>
+                   placeholder="Enter a valid email address" name="email" formControlName="email" />
+            @if(SignupUserForm.get('email')?.hasError('required') && (SignupUserForm.get('email')?.dirty||SignupUserForm.get('email')?.touched||isSubmitted)){
+              <span class="errors">ce champ est requis</span>
+            }
+            @if(SignupUserForm.get('email')?.hasError('email') && SignupUserForm.get('email')?.value!='' && isSubmitted){
+              <span class="errors">l'email n'est pas valide</span>
             }
           </div>
           <div data-mdb-input-init class="form-outline mb-3">
             <label class="form-label" for="password">Password</label>
 
             <input type="password" id="password" class="form-control form-control-lg"
-                   placeholder="Enter password" name="password" [(ngModel)]="user.password" #passwatt="ngModel" required />
-            @if(passwatt.hasError('required') && passwatt.dirty){
-              <div class="errors">
-                <span>ce champ est requis</span>
-              </div>
+                   placeholder="Enter password" name="password" formControlName="password" />
+            @if(SignupUserForm.get('password')?.hasError('required') && (SignupUserForm.get('password')?.dirty||SignupUserForm.get('password')?.touched||isSubmitted)){
+              <span class="errors">ce champ est requis</span>
             }
+            @if(SignupUserForm.get('password')?.hasError('minlength') && (SignupUserForm.get('password')?.dirty||isSubmitted)){
+              <span class="errors">ce champ doit contenir au moins 8 caracteres</span>}
           </div>
 
           <div data-mdb-input-init class="form-outline mb-3">
             <label class="form-label" for="confirmpassword">Confirm Password</label>
 
             <input type="password" id="confirmpassword" class="form-control form-control-lg"
-                   placeholder="Enter password" />
+                   placeholder="Enter password" formControlName="confirmPassword" />
+            @if(SignupUserForm.get('confirmPassword')?.hasError('required') && (SignupUserForm.get('confirmPassword')?.dirty||SignupUserForm.get('confirmPassword')?.touched||isSubmitted)){
+              <div>
+              <span class="errors">ce champ est requis</span>
+              </div>}
+            @if(SignupUserForm.hasError('passwordMismatch') && SignupUserForm.get('confirmPassword')?.dirty){
+              <div>
+              <span class="errors">Mot de passe ne correspond pas</span>
+              </div>}
           </div>
 
 <!--          <div class="d-flex justify-content-between align-items-center">-->

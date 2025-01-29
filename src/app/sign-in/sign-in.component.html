@@ -6,7 +6,7 @@
              class="img-fluid" alt="Sample image">
       </div>
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-        <form (ngSubmit)="signIn(f)" #f="ngForm">
+        <form (ngSubmit)="signIn()" [formGroup]="SigninUserForm">
           <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
             <p class="lead fw-normal mb-0 me-3">Sign in with</p>
             <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-floating mx-1">
@@ -31,26 +31,25 @@
             <label class="form-label" for="form3Example3">Email address</label>
 
             <input type="email" id="form3Example3" class="form-control form-control-lg"
-                   placeholder="Enter a valid email address" name="email" [(ngModel)]="user.email" #emailatt="ngModel" required/>
-            @if(emailatt.hasError('required') && emailatt.dirty){
-              <div class="errors">
-                <span>ce champ est requis</span>
-
-              </div>
+                   placeholder="Enter a valid email address" name="email" formControlName="email"/>
+            @if(SigninUserForm.get('email')?.hasError('required') && (SigninUserForm.get('email')?.dirty||SigninUserForm.get('email')?.touched||isSubmitted)){
+                <span class="errors">ce champ est requis</span>
+            }
+            @if(SigninUserForm.get('email')?.hasError('email') && SigninUserForm.get('email')?.value!='' && isSubmitted){
+              <span class="errors">l'email n'est pas valide</span>
             }
           </div>
 
           <label class="form-label" for="form3Example4">Password</label>
           <div data-mdb-input-init class="form-outline mb-3">
             <input type="password" id="form3Example4" class="form-control form-control-lg"
-                   placeholder="Enter password" name="password" [(ngModel)]="user.password" #passwatt="ngModel" required  />
-            @if(passwatt.hasError('required') && passwatt.dirty){
-              <div class="errors">
-                <span>ce champ est requis</span>
-              </div>
+                   placeholder="Enter password" name="password" formControlName="password"  />
+            @if(SigninUserForm.get('password')?.hasError('required') && (SigninUserForm.get('password')?.dirty||SigninUserForm.get('password')?.touched||isSubmitted)){
+                <span class="errors">ce champ est requis</span>
             }
+            @if(SigninUserForm.get('password')?.hasError('minlength') && (SigninUserForm.get('password')?.dirty||isSubmitted)){
+              <span class="errors">ce champ doit contenir au moins 8 caracteres</span>}
           </div>
-
           <div class="d-flex justify-content-between align-items-center">
             <!-- Checkbox -->
             <div class="form-check mb-0">
