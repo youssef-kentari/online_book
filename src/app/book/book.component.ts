@@ -15,8 +15,10 @@ export class BookComponent {
   showPopup = false;
 
   constructor(private router: Router){}
-
+/*
   navigateToDetails(){
     this.router.navigate(['/details',this.bookItem.isbn])
   }
+  */
+
 }

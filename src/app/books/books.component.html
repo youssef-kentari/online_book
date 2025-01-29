@@ -1,0 +1,23 @@
+<div style="margin-left: 100px">
+
+  <div class="section">
+    <h2>Trending Books</h2>
+    <div class="carousel">
+      <div class="book-card" *ngFor="let book of trendingBooks">
+        <img [src]="book.coverUrl" [alt]="book.title" />
+        <button [ngClass]="getButtonClass(book.status)">{{ book.status }}</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Classic Books</h2>
+    <div class="carousel">
+      <div class="book-card" *ngFor="let book of classicBooks">
+        <img [src]="book.coverUrl" [alt]="book.title" />
+        <button [ngClass]="getButtonClass(book.status)">{{ book.status }}</button>
+      </div>
+    </div>
+  </div>
+
+</div>

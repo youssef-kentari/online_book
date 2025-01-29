@@ -4,7 +4,7 @@ import { Book } from '../../model/Book';
 import { BookService } from '../../services/book.service';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
-
+/*
 @Component({
   selector: 'app-details-book',
   standalone: true,
@@ -27,6 +27,7 @@ export class DetailsBookComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
     this.routeSubscription = this.route.paramMap.subscribe((params) => {
       this.isbn = params.get('isbn')!;
       this.getBook(this.isbn);
@@ -59,7 +60,8 @@ export class DetailsBookComponent implements OnInit {
   }
 
   navigateToMainPage(): void {
-    this.router.navigate(['/']); 
+    this.router.navigate(['/']);
   }
-  
+
 }
+*/

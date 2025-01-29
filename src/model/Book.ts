@@ -1,10 +1,10 @@
 import { Categorie } from "./Categorie";
 
-export interface Book{
-    title: string;
-    author:string;
-    cover_image: string;
-    nbrExemplaireAvai: number;
-    categorie:Categorie;
-    isbn: string;
+export class Book {
+  constructor(
+    public title: string,
+    public author: string,
+    public coverUrl: string,
+    public status: 'Checked Out' | 'Preview Only' | 'Join Waitlist' | 'Borrow' | 'Read'
+  ) {}
 }
