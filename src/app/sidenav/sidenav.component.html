@@ -1,0 +1,11 @@
+<div class="side-nav-content ">
+  <ul class="nav-list">
+    @for(c of menu;track $index){
+    <li class="nav-list-item ">
+      <i class="{{c.icon}} "></i>
+      <span ><a  [routerLink]="c.router">{{c.label}}</a></span>
+    </li>
+    }
+  </ul>
+
+</div>

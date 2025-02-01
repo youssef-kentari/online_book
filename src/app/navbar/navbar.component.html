@@ -1,44 +1,87 @@
 
-<div
-  class="sidenav"
-  [ngClass]="isLeftSidebarCollapsed ? 'sidenav-collapsed' : ''"
->
-  <div class="logo-container">
-    <button class="logo" (click)="toggleCollapse()">
-      <i class="fas fa-bars"></i>
-    </button>
-    @if (!isLeftSidebarCollapsed) {
-      <div class="logo-text">Menu</div>
-      <button class="btn-close" (click)="closeSidenav()">
-        <i class="fas fa-times close-icon"></i>
-      </button>
-    }
+<!--<div-->
+<!--  class="sidenav"-->
+<!--  [ngClass]="isLeftSidebarCollapsed ? 'sidenav-collapsed' : ''"-->
+<!--&gt;-->
+<!--  <div class="logo-container">-->
+<!--    <button class="logo" (click)="toggleCollapse()">-->
+<!--      <i class="fas fa-bars"></i>-->
+<!--    </button>-->
+<!--    @if (!isLeftSidebarCollapsed) {-->
+<!--      <div class="logo-text">Menu</div>-->
+<!--      <button class="btn-close" (click)="closeSidenav()">-->
+<!--        <i class="fas fa-times close-icon"></i>-->
+<!--      </button>-->
+<!--    }-->
 
-  </div>
-  <div class="sidenav-nav">
-    @for (item of items; track $index) {
-      <li class="sidenav-nav-item">
-        <a
-          class="sidenav-nav-link"
-          [routerLink]="item.routeLink"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
-          <i class="sidenav-link-icon" [class]="item.icon"></i>
-          @if (!isLeftSidebarCollapsed) {
-            <span class="sidenav-link-text">{{ item.label }}</span>
-          }
-        </a>
-      </li>
-    }
-  </div>
+<!--  </div>-->
+<!--  <div class="sidenav-nav">-->
+<!--    @for (item of items; track $index) {-->
+<!--      <li class="sidenav-nav-item">-->
+<!--        <a-->
+<!--          class="sidenav-nav-link"-->
+<!--          [routerLink]="item.routeLink"-->
+<!--          routerLinkActive="active"-->
+<!--          [routerLinkActiveOptions]="{ exact: true }"-->
+<!--        >-->
+<!--          <i class="sidenav-link-icon" [class]="item.icon"></i>-->
+<!--          @if (!isLeftSidebarCollapsed) {-->
+<!--            <span class="sidenav-link-text">{{ item.label }}</span>-->
+<!--          }-->
+<!--        </a>-->
+<!--      </li>-->
+<!--    }-->
+<!--  </div>-->
+<!--</div>-->
+<!--<div class="navbar">-->
+<!--  <div class="navbar-content">-->
+<!--    <span class="navbar-brand">Online Book</span>-->
+<!--    <div class="navbar-menu">-->
+<!--      <button class="navbar-button" routerLink='/signIn'>Log In</button>-->
+<!--      <button class="navbar-button">Log out</button>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<nav class="navbar navbar-expand navbar-dark bg-dark px-2">
+
+<div class="side-nav-button p-2 me-3 text-light" (click)="SideNavToggle()">
+  <i class="fa-solid fa-bars" ></i>
 </div>
-<div class="navbar">
-  <div class="navbar-content">
-    <span class="navbar-brand">Online Book</span>
-    <div class="navbar-menu">
-      <button class="navbar-button" routerLink='/signIn'>Log In</button>
-      <button class="navbar-button">Log out</button>
+  <a class="navbar-brand px-4" href="#">Online Book</a>
+  <div class="navbar-collapse">
+    <ul class="navbar-nav me-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" href="#">
+          Categorie
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark">
+          <li>
+            <a class="dropdown-item" href="#">child1</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">child2</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">child3</a>
+          </li>
+        </ul>
+      </li>
+
+    </ul>
+    <form class="d-flex me-5">
+      <input class="form-control me-2" type="search" placeholder="Search">
+      <button type="submit" class="btn btn-outline-light">Search</button>
+    </form>
+    <div class="profil-logo dropstart">
+      <button class="btn btn-outline-light dropdown-toggle" data-bs-toggle="dropdown">
+        Rayane
+      </button>
+      <ul class="dropdown-menu dropdown-menu-dark">
+        <li><a  class="dropdown-item" routerLink="signIn">Sign Up</a></li>
+        <li><a  class="dropdown-item"routerLink="signUp">Log In</a></li>
+        <li><a  class="dropdown-item">Your Profile </a></li>
+        <li><a  class="dropdown-item">Log Out</a></li>
+      </ul>
     </div>
   </div>
-</div>
+</nav>
